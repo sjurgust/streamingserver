@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/sjurgust/streamingserver/issues"
   },
-  "homepage": "https://github.com/sjurgust/streamingserver#readme"
+  "homepage": "https://github.com/sjurgust/streamingserver#readme",
+  "dependencies": {
+    "coffee-script": "^1.12.7",
+    "connect": "^3.6.5",
+    "express.io": "^1.1.13",
+    "video-thumbnail-generator": "^1.1.2"
+  }
 }
