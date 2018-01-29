@@ -1,12 +1,17 @@
 global.app_port = 3344
 // viz "makroer" for vizkommandoer
+global.app_root = __dirname.replace(/\\\\/g, '/').replace(/\\/g, '/')
 // selve serverprogrammet
 fs = require("fs")
 app = require('express.io')()
 app.http().io()
 
 const videolist = [
-  '','_LOTTO_GFXBG_FULLSKJERM_gull_short.mov_.mp4','_LOTTO_GFXBG_FULLSKJERM_short.mov_.mp4'
+  {url:'',poster:''},
+  {url:'cris_og_faren.m4v',poster:'cris_og_faren.png'},
+  {url:'Katten_henter_en_nerf-sett54ganger.mp4',poster:'Katten_henter_en_nerf-sett54ganger.png'},
+  '',
+
 ]
 
 const ThumbnailGenerator = require('video-thumbnail-generator').default;
@@ -55,9 +60,13 @@ let generateThumbs = (strVidPath) => {
 
 
 
+app.get('/poster', function(req, res) {
+  let id = req.query.id ? req.query.id : 1
+  res.sendfile(app_root + `/thumbs/${videolist[parseInt(id)].poster}`)
+})
 app.get('/watch', function(req, res) {
-  let vid = req.query.vid ? req.query.vid : 1
-  const path = `video/${videolist[parseInt(vid)]}`
+  let id = req.query.id ? req.query.id : 1
+  const path = app_root + `/streaming_server_files/${videolist[parseInt(id)].url}`
   // generateThumbs(path)
   const stat = fs.statSync(path)
   const fileSize = stat.size
