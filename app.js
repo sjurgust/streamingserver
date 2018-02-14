@@ -8,8 +8,11 @@ app.http().io()
 
 const videolist = [
   {url:'',poster:''},
-  {url:'cris_og_faren.m4v',poster:'cris_og_faren.png'},
-  {url:'Katten_henter_en_nerf-sett54ganger.mp4',poster:'Katten_henter_en_nerf-sett54ganger.png'},
+  {url:'cris_og_faren.m4v', content_type:'video/mp4', poster:'cris_og_faren.png'},
+  {url:'Katten_henter_en_nerf-sett54ganger.mp4', content_type:'video/mp4', poster:'Katten_henter_en_nerf-sett54ganger.png'},
+  {url:'Balloons 3D Live Wallpaper-kqvdE_yZ84I.mp4', content_type:'video/mp4', poster:'proxy.png'},
+  {url:'xek2004.mp4', content_type:'video/mp4', poster:'ek204.png'},
+
   '',
 
 ]
@@ -57,15 +60,23 @@ let generateThumbs = (strVidPath) => {
 // })
 
 
-
+app.get('/round_thumb', function(req, res) {
+  let id = req.query.vid ? req.query.vid : 1
+  const rounds = ['round_thumbs_sample_f.png','round_thumbs_sample_c.png','round_thumbs_sample_u.png','round_thumbs_sample_a.png']
+  rand = Math.random();
+  rand *= rounds.length;
+  rand = Math.floor(rand);
+  res.sendfile(app_root + `/thumbs/${rounds[rand]}`)
+})
 
 
 app.get('/poster', function(req, res) {
-  let id = req.query.id ? req.query.id : 1
+  let id = req.query.vid ? req.query.vid : 1
   res.sendfile(app_root + `/thumbs/${videolist[parseInt(id)].poster}`)
 })
 app.get('/watch', function(req, res) {
-  let id = req.query.id ? req.query.id : 1
+  let id = req.query.vid ? req.query.vid : 1
+  // let content_type = req.query.id ? req.query.id : 1
   const path = app_root + `/streaming_server_files/${videolist[parseInt(id)].url}`
   // generateThumbs(path)
   const stat = fs.statSync(path)
@@ -83,7 +94,7 @@ app.get('/watch', function(req, res) {
       'Content-Range': `bytes ${start}-${end}/${fileSize}`,
       'Accept-Ranges': 'bytes',
       'Content-Length': chunksize,
-      'Content-Type': 'video/mp4',
+      'Content-Type': `${videolist[parseInt(id)].content_type}`,
     }
     res.writeHead(206, head);
     file.pipe(res);
