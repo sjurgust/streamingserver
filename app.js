@@ -8,10 +8,14 @@ app.http().io()
 
 const videolist = [
   {url:'',poster:''},
-  {url:'cris_og_faren.m4v', content_type:'video/mp4', poster:'cris_og_faren.png'},
-  {url:'Katten_henter_en_nerf-sett54ganger.mp4', content_type:'video/mp4', poster:'Katten_henter_en_nerf-sett54ganger.png'},
-  {url:'Balloons 3D Live Wallpaper-kqvdE_yZ84I.mp4', content_type:'video/mp4', poster:'proxy.png'},
-  {url:'xek2004.mp4', content_type:'video/mp4', poster:'ek204.png'},
+  {url:'cris_og_faren.m4v', content_type:'video/mp4', poster:'cris_og_faren.png'}, //1
+  {url:'Katten_henter_en_nerf-sett54ganger.mp4', content_type:'video/mp4', poster:'Katten_henter_en_nerf-sett54ganger.png'},//2
+  {url:'Balloons 3D Live Wallpaper-kqvdE_yZ84I.mp4', content_type:'video/mp4', poster:'proxy.png'},//3
+  {url:'grey.mp4', content_type:'video/mp4', poster:'ek204.png'},//4
+  {url:'Making DIY Slim Gone Wrong-NybSLhWzqC4.mp4', content_type:'video/mp4', poster:'Thumb-Making-DIY-Slim-Gone-Wrong.jpg'},//5 Naif jr
+  {url:'Giving a shoutout To-9nP_HnvDjYA.mp4', content_type:'video/mp4', poster:'Thumb-Giving-a-shoutout-To-9nP_HnvDjYA.jpg'},//6 Naif jr
+  {url:'GOT A Legendary Chest OMG!!!-MEGzuz80nEg.mp4', content_type:'video/mp4', poster:'thumb-GOT-A-Legendary-Chest-OMG!!!-MEGzuz80nEg.f140.jpg'},//7 Naif jr
+  {url:'Visiting sharks-z36yo4AvFhA.mp4', content_type:'video/mp4', poster:'thumb-Visiting-sharks-z36yo4AvFhA.jpg'},//8 Naif jr
 
   '',
 
