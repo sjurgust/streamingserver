@@ -7,7 +7,7 @@ app = require('express.io')()
 app.http().io()
 
 const videolist = [
-  {url:'',poster:''},
+  {url:'grey.mp4', content_type:'video/mp4', poster:'grey.png'},//grey
   {url:'cris_og_faren.m4v', content_type:'video/mp4', poster:'cris_og_faren.png'}, //1
   {url:'Katten_henter_en_nerf-sett54ganger.mp4', content_type:'video/mp4', poster:'Katten_henter_en_nerf-sett54ganger.png'},//2
   {url:'Balloons 3D Live Wallpaper-kqvdE_yZ84I.mp4', content_type:'video/mp4', poster:'proxy.png'},//3
